@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+  </head>
+  {% load static %}
+  <body  style="  background-image: url('{% static 'heart.jpg' %}' )">
+      <nav class="nav">
+        <ul class="nav nav-tabs">
+        <li class="nav-item">
+        <a class="nav-link active" href="{% url "Home" %}">Home</a>
+        </li>
+      <li class="nav-item">
+      <a class="nav-link " href="{% url "Register" %}">Register</a>
+      </li>
+
+      <li class="nav-item">
+      <a class="nav-link active " href="{% url "admin:index" %} ">Admin</a>  </li>
+
+       <li class="nav-item">
+      <a class="nav-link " href="{% url "About" %} ">About us </a>  </li>
+
+       <li class="nav-item">
+      <a class="nav-link active " href="{% url "Pre" %} ">Precautions</a>  </li>
+
+      {% if user.is_authenticated %}
+
+      <li class="nav-item">
+      <a class="nav-link  " href="{% url "out" %}">Logout</a>
+      </li>
+
+
+      {%else%}
+      <li class="nav-item ">
+      <a class="nav-link" href="{% url "Login" %}">Login</a>
+      </li>
+
+
+      {%endif%}
+
+      </ul>
+      </nav>
+
+      <style media="screen">
+      body{
+        background-repeat: no-repeat;
+        background-size: cover;
+
+      }
+
+
+  div.container4 h1 {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%) }
+      </style>
+
+
+    {% block Home %}
+    {% endblock Home %}
+
+   {% if user.is_authenticated %}
+      <div class = container4 >
+        <h1>Hello, {{ user.username|default:'Guest' }}!</h1>
+
+
+      </div>
+        <h1> Heart failure prediction</h1>
+    <div class="bg-agile">
+	<div class="book-appointment">
+
+
+
+        <form class="" action="{% url 'result' %}" method="post" >
+        {% csrf_token %}
+        <div class="left-agileits-w3layouts same">
+          <div class="gaps">
+
+             	<h2>Medical Information</h2>
+
+            <p>Age<p>
+            {{form.age}}
+          </div>
+
+					<div class="gaps">
+						<p>Gender</p>
+							{{form.sex}}
+					</div>
+
+          <div class="gaps">
+            <p>Chest Pain</p>
+              {{form.cp}}
+          </div>
+
+					<div class="gaps">
+						<p>Resting BP</p>
+							{{form.resting_bp}}
+					</div>
+
+					<div class="gaps">
+						<p>Serum Cholestrol</p>
+							{{form.serum_cholesterol}}
+					</div>
+
+					<div class="gaps">
+						<p>Fasting Blood Sugar</p>
+						   {{form.fasting_blood_sugar}}
+					</div>
+
+					<div class="gaps">
+						<p>Resting  Electrocardiographic Result</p>
+						{{form.resting_ecg}}
+					</div>
+
+					<div class="gaps">
+						<p>Maximum Heart Rate</p>
+						{{form.max_heart_rate}}
+					</div>
+
+					<div class="gaps">
+						<p>Excercise Induced Angina</p>
+						{{form.exercise_induced_angina}}
+					</div>
+
+					<div class="gaps">
+						<p>ST Depression</p>
+						{{form.st_depression}}
+					</div>
+
+				</div>
+
+				<div class="right-agileinfo same">
+
+          <div class="gaps">
+						<p>Slope of the peak exercise ST segment </p>
+				      {{form.st_slope}}
+					</div>
+
+          <div class="gaps">
+            <p>Number of major vessels (0-3) colored by flourosopy</p>
+              {{form.number_of_vessels}}
+          </div>
+
+          <div class="gaps">
+            <p>Thalium Scan Results</p>
+              {{form.thallium_scan_results}}
+          </div>
+
+				</div>
+                <br>
+				<div class="clear"></div>
+				<input type="submit" value="Predict" class="btn btn-primary">
+			</form>
+
+		</div>
+   </div>
+
+    <style media="screen">
+    form{
+      padding: 200px;
+      border: 2px solid;
+      margin: 200px;
+      border-radius: 10px;
+    }
+
+  </style>
+
+      {%endif%}
+  </body>
+</html>

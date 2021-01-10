@@ -1,0 +1,33 @@
+{% extends "accounts/Home.html"%}
+{% load static %}
+{% block Home %}
+
+  {% if registered %}
+  <h1>Thank you for registering </h1>
+  {% else %}
+
+  <form  method="post" enctype="multipart/form-data">
+    <h1>Register here!</h1>
+    <h3>Fill out the form:</h3>
+    {% csrf_token%}
+    {{user_form.as_ul}}
+    <br>
+    {{profile_form.as_p}}
+
+    <br>
+
+
+  <input type="submit" name="" value="Register ">
+
+  </form>
+  <style media="screen">
+    form{
+      padding: 40px 60px 40px 60px;
+      border: 2px solid;
+      margin: 100px 500px 300px;
+      border-radius: 10px;
+    }
+  </style>
+  {% endif %}
+{% endblock Home%}
+<link rel="stylesheet" href="{% static "Login.css" %}">

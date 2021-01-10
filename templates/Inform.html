@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict Form</title>
+</head>
+<body>
+<h1>Predict your Heart disease</h1>
+    <div class="bg-agile">
+	<div class="book-appointment">
+	<h2>Medical Information</h2>
+
+
+
+        <form class="" action="{% url 'result' %}" method="post" >
+        {% csrf_token %}
+        <div class="left-agileits-w3layouts same">
+          <div class="gaps">
+            <p>Age<p>
+            {{form.age}}
+          </div>
+
+					<div class="gaps">
+						<p>Gender</p>
+							{{form.sex}}
+					</div>
+
+          <div class="gaps">
+            <p>Chest Pain</p>
+              {{form.cp}}
+          </div>
+
+					<div class="gaps">
+						<p>Resting BP</p>
+							{{form.resting_bp}}
+					</div>
+
+					<div class="gaps">
+						<p>Serum Cholestrol</p>
+							{{form.serum_cholesterol}}
+					</div>
+
+					<div class="gaps">
+						<p>Fasting Blood Sugar</p>
+						   {{form.fasting_blood_sugar}}
+					</div>
+
+					<div class="gaps">
+						<p>Resting  Electrocardiographic Result</p>
+						{{form.resting_ecg}}
+					</div>
+
+					<div class="gaps">
+						<p>Maximum Heart Rate</p>
+						{{form.max_heart_rate}}
+					</div>
+
+					<div class="gaps">
+						<p>Excercise Induced Angina</p>
+						{{form.exercise_induced_angina}}
+					</div>
+
+					<div class="gaps">
+						<p>ST Depression</p>
+						{{form.st_depression}}
+					</div>
+
+				</div>
+
+				<div class="right-agileinfo same">
+
+          <div class="gaps">
+						<p>Slope of the peak exercise ST segment </p>
+				      {{form.st_slope}}
+					</div>
+
+          <div class="gaps">
+            <p>Number of major vessels (0-3) colored by flourosopy</p>
+              {{form.number_of_vessels}}
+          </div>
+
+          <div class="gaps">
+            <p>Thalium Scan Results</p>
+              {{form.thallium_scan_results}}
+          </div>
+
+				</div>
+
+				<div class="clear"></div>
+				<input type="submit" value="Predict" class="btn btn-primary">
+			</form>
+
+		</div>
+   </div>
+
+</body>
+</html>
